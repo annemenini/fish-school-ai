@@ -51,6 +51,12 @@ coverage.xml
 *.mo
 *.pot
 
+# PyCharm
+.idea
+
+# Virtual Env
+.venv
+
 # Django stuff:
 *.log
 local_settings.py

@@ -58,9 +58,9 @@ class School:
         discrete_step_z = flags.space_dim_z / discrete_dim_z
 
         for fish in self.fishes:
-            discrete_position_x = floor(fish.position.x / discrete_step_x)
-            discrete_position_y = floor(fish.position.y / discrete_step_y)
-            discrete_position_z = floor(fish.position.z / discrete_step_z)
+            discrete_position_x = np.floor(fish.position.x / discrete_step_x)
+            discrete_position_y = np.floor(fish.position.y / discrete_step_y)
+            discrete_position_z = np.floor(fish.position.z / discrete_step_z)
             discrete_space[discrete_position_x, discrete_position_y, discrete_position_z].append(fish)
 
         return discrete_space
@@ -76,13 +76,13 @@ class School:
         open3d.visualization.draw_geometries([point_cloud])
 
     def dump_and_display(self):
-        dump_configuration(self)
+        self.dump_configuration()
         if flags.display:
-            display(self)
+            self.display()
 
 
 def main():
-    school = Shool(flags.num_fish)
+    school = School(flags.num_fish, flags.dumpig_location)
     school.dump_and_display()
     for _ in range(flags.num_step):
         school.animate_step()
